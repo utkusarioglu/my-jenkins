@@ -2,10 +2,10 @@
 
 Jenkins setup repo for home. This repo assumes the following:
 
-1. The host computer is windows
-2. The guest computer that creates the jenkins image is a debian linux instance
+1. The host computer runs windows
+2. The guest computer that creates the jenkins image runs a debian linux version
 3. The host runs the private docker repository "registry:2" at port 5000
-4. That the registry is set as an insecure registry by the docker instances of
+4. That the registry is set as an `insecure-registry` by the docker instances of
    the host and the client
 
 ## Current settings
