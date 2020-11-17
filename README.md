@@ -32,9 +32,9 @@ manually is no hassle.
 3. Tags it with the repository address
 4. Pushes the custom image
 
-### Running the Jenkins container on the host
+### Initializing Jenkins on the host machine
 
-`./run_image.ps1` is intended to do the following:
+`./init.ps1` is intended to do the following:
 
 1. Pull the MyJenkins image from the private repo
 2. Create the network `jenkins`
@@ -43,11 +43,14 @@ manually is no hassle.
 5. Return the jenkins startup admin password along with the url that the user
    shall visit
 
-### Using jenkins
-
 Jenkins instance shall be available at: `<Host ip>:<Jenkins port>`. Once the
-`./run_image.ps1` is run on the host machine, it will return the initial admin
+`./init.ps1` is run on the host machine, it will return the initial admin
 password to continue the setup.
 
-Setup and operation of Jenkins after said stage is beyond the scope of this
-repo.
+Setup of Jenkins after said stage is beyond the scope of this repo.
+
+### Subsequent runs of Jenkins on the host
+
+After the initalization, Jenkins containers can be started by using the script
+`./run.ps1`. As long as docker volumes `jenkins-data` and `jenkins-docker-certs`
+are intact, Jenkins should work nominally.
