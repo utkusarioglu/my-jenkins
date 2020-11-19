@@ -1,16 +1,15 @@
 #!/bin/bash
 
-TAG="myjenkins-blueocean:1.1"
-REGISTRY_PORT="5000"
-REGISTRY_IP="192.168.1.151"
+source .env
+
 REPOSITORY_ADDRESS="$REGISTRY_IP:$REGISTRY_PORT"
-ADDRESSED_TAG="$REPOSITORY_ADDRESS/$TAG"
+ADDRESSED_TAG="$REPOSITORY_ADDRESS/$MYJENKINS_IMAGE"
 
 echo "Building the docker image..."
-docker build -t "$TAG" .
+docker build -t "$MYJENKINS_IMAGE" .
 
 echo "Tagging image for the remote repository address..."
-docker tag "$TAG" "$ADDRESSED_TAG"
+docker tag "$MYJENKINS_IMAGE" "$ADDRESSED_TAG"
 
 echo "Pushing the image to: \"$ADDRESSED_TAG\"..."
 docker push "$ADDRESSED_TAG"
